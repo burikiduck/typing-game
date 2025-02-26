@@ -19,9 +19,13 @@ const timeCount = setInterval(() => {
     } else {
       isFinish.value = true
       clearInterval(timeCount)
+      emit('finish')
     }
   }
 }, 1000)
+const emit = defineEmits<{
+  finish: [void]
+}>()
 </script>
 <template>
   <h1 class="text-4xl">Time Left</h1>
