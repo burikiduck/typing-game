@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import CardInfo from '@/components/common/CardInfo.vue'
 import InputForm from '@/components/InputForm.vue'
 import ScoreBord from '@/components/ScoreBord.vue'
 import { calcScore } from '@/utils/scoreUtil'
@@ -23,17 +24,16 @@ const handleScore = () => {
 }
 </script>
 <template>
-  <h1 class="text-4xl">Your Score</h1>
-  <div class="p-8">
-    <ScoreBord :score="score" />
-  </div>
-  <div class="pb-8">
-    <h2 class="text-2xl">{{ subject }}</h2>
-  </div>
-  <div v-if="!isFinish">
-    <InputForm :subject="subject" @complete="handleScore" />
-  </div>
-  <div v-else>
+  <ScoreBord :score="score" />
+  <CardInfo>
+    <template #title>
+      <h2 class="text-2xl">{{ subject }}</h2>
+    </template>
+    <template #content>
+      <InputForm :subject="subject" :is-disabled="isFinish" @input-done="handleScore" />
+    </template>
+  </CardInfo>
+  <div v-if="isFinish">
     <h2 class="text-2xl">Finish</h2>
   </div>
   <div>
