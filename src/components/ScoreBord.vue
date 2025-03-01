@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import CardInfo from './common/CardInfo.vue';
+
 const props = withDefaults(defineProps<{
   score: number
 }>(), {
@@ -6,7 +8,14 @@ const props = withDefaults(defineProps<{
 })
 </script>
 <template>
+  <CardInfo>
+    <template #title>
+      <h1 class="text-4xl">Your Score</h1>
+    </template>
+    <template #content>
+      <h1 class="text-4xl">{{ props.score }}</h1>
+    </template>
+  </CardInfo>
   <div>
-    <h1 class="text-4xl">{{ props.score }}</h1>
   </div>
 </template>

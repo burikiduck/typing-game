@@ -8,7 +8,7 @@
     </div>
     <div class="flex flex-row">
       <div class="basis-64">
-        <RouterLink to="/normalMode">Normal mode</RouterLink>
+        <RouterLink to="/practiceMode">Practice mode</RouterLink>
       </div>
       <div class="basis-64">
         <RouterLink to="/timeMode">Time mode</RouterLink>
