@@ -1,0 +1,62 @@
+<script setup lang="ts">
+// import Particles from "@tsparticles/vue3";
+// import { loadFull } from "tsparticles";
+import { ref, watchEffect } from 'vue'
+
+const props = withDefaults(defineProps<{
+  isShow: boolean
+}>(), {
+  isShow: false
+})
+const isModalShow = ref(props.isShow)
+// const particleOptions = {
+//   particles: {
+//     number: { value: 50 },
+//     shape: { type: "circle" },
+//     size: { value: 5 },
+//     move: { enable: true, speed: 5 },
+//     opacity: { value: 0.7 },
+//     color: { value: ["#f00", "#ff0", "#0f0", "#00f"] },
+//   }
+// }
+const closeModal = () => {
+  isModalShow.value = false
+}
+watchEffect (() => {
+  isModalShow.value = props.isShow
+})
+</script>
+<template>
+  <transition name="modal" appear>
+    <div v-if="isModalShow" class="fixed inset-0 flex items-center justify-center modal-overlay" @click="closeModal">
+      <!-- <Particles id="tsparticles" :options="particleOptions" /> -->
+      <div class="bg-white p-8 rounded-lg modal-content" @click.stop>
+        <h1 class="text-2xl text-center p-4">New High Score!🏆</h1>
+        <p class="py-4">You just broke your own record. Keep it up!</p>
+        <div class="flex justify-end pt-4">
+          <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer disabled:bg-gray-300"
+            @click="closeModal">Close</button>
+        </div>
+      </div>
+    </div>
+  </transition>
+</template>
+<style scoped>
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  animation: fadeInScale 0.5s ease-out;
+}
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+</style>

@@ -33,10 +33,10 @@ const handleScore = () => {
       <InputForm :subject="subject" :is-disabled="isFinish" @input-done="handleScore" />
     </template>
   </CardInfo>
-  <div v-if="isFinish">
-    <h2 class="text-2xl">Finish</h2>
+  <div v-if="isFinish" class="mt-8">
+    <h2 class="text-2xl">Now, let's challenge ourselves in the real test!</h2>
   </div>
-  <div>
-    <RouterLink to="/">Quit game</RouterLink>
+  <div class="mt-8">
+    <RouterLink to="/" class="text-cyan-600 hover:text-cyan-700">Quit practice</RouterLink>
   </div>
 </template>
