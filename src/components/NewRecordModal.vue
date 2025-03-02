@@ -1,14 +1,7 @@
 <script setup lang="ts">
 // import Particles from "@tsparticles/vue3";
 // import { loadFull } from "tsparticles";
-import { ref, watchEffect } from 'vue'
 
-const props = withDefaults(defineProps<{
-  isShow: boolean
-}>(), {
-  isShow: false
-})
-const isModalShow = ref(props.isShow)
 // const particleOptions = {
 //   particles: {
 //     number: { value: 50 },
@@ -19,16 +12,13 @@ const isModalShow = ref(props.isShow)
 //     color: { value: ["#f00", "#ff0", "#0f0", "#00f"] },
 //   }
 // }
-const closeModal = () => {
-  isModalShow.value = false
-}
-watchEffect (() => {
-  isModalShow.value = props.isShow
-})
+const emit = defineEmits<{
+  closeModal: [void]
+}>()
 </script>
 <template>
   <transition name="modal" appear>
-    <div v-if="isModalShow" class="fixed inset-0 flex items-center justify-center modal-overlay" @click="closeModal">
+    <div class="fixed inset-0 flex items-center justify-center modal-overlay" @click="emit('closeModal')">
       <!-- <Particles id="tsparticles" :options="particleOptions" /> -->
       <div class="bg-white p-8 rounded-lg modal-content" @click.stop>
         <h1 class="text-2xl text-center p-4">New High Score!🏆</h1>
@@ -36,7 +26,7 @@ watchEffect (() => {
         <div class="flex justify-end pt-4">
           <button
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer disabled:bg-gray-300"
-            @click="closeModal">Close</button>
+            @click="emit('closeModal')">Close</button>
         </div>
       </div>
     </div>

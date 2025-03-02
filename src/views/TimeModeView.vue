@@ -16,7 +16,7 @@ const score = ref(0)
 const limitCount = ref(30)
 const subject = ref('')
 const useScore = useScoreStore()
-const isHighScore = ref(false)
+const isShowModal = ref(false)
 
 subject.value = getNext()
 const setTime = (time:number) => {
@@ -35,7 +35,7 @@ const timeUp = () => {
   const storeScore = limitCount.value === 30 ? useScore.score.mode_30 : useScore.score.mode_60
   if (storeScore < score.value) {
     // alert('New Record!')
-    isHighScore.value = true
+    isShowModal.value = true
     useScore.setScore(score.value, limitCount.value)
   }
 }
@@ -67,5 +67,5 @@ const handleScore = () => {
       <RouterLink to="/" class="text-cyan-600 hover:text-cyan-700">Quit game</RouterLink>
     </div>
   </div> 
-  <NewRecordModal :is-show="isHighScore" />
+  <NewRecordModal v-if="isShowModal" @close-modal="isShowModal = false" />
 </template>
