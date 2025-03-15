@@ -1,25 +1,22 @@
 <script setup lang="ts">
-// import Particles from "@tsparticles/vue3";
-// import { loadFull } from "tsparticles";
-
-// const particleOptions = {
-//   particles: {
-//     number: { value: 50 },
-//     shape: { type: "circle" },
-//     size: { value: 5 },
-//     move: { enable: true, speed: 5 },
-//     opacity: { value: 0.7 },
-//     color: { value: ["#f00", "#ff0", "#0f0", "#00f"] },
-//   }
-// }
+const particleOptions = {
+  particles: {
+    number: { value: 50 },
+    shape: { type: "circle" },
+    size: { value: 5 },
+    move: { enable: true, speed: 5 },
+    opacity: { value: 0.7 },
+    color: { value: ["#f00", "#ff0", "#0f0", "#00f"] },
+  }
+}
 const emit = defineEmits<{
   closeModal: [void]
 }>()
 </script>
 <template>
+  <vue-particles id="tsparticles" :options="particleOptions" />
   <transition name="modal" appear>
     <div class="fixed inset-0 flex items-center justify-center modal-overlay" @click="emit('closeModal')">
-      <!-- <Particles id="tsparticles" :options="particleOptions" /> -->
       <div class="bg-white p-8 rounded-lg modal-content" @click.stop>
         <h1 class="text-2xl text-center p-4">New High Score!🏆</h1>
         <p class="py-4">You just broke your own record. Keep it up!</p>
