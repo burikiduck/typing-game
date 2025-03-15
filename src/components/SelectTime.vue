@@ -15,9 +15,9 @@ const emit = defineEmits<{
     <template #content>
       <div class="py-4">
         <input id="sec-30" v-model="timeOptions" type="radio" name="time" value="30" class="mr-2" @change="emit('changeValue', 30)" />
-        <label for="sec-30" class="ml-2 cursor-pointer mr-8">30 sec</label>
+        <label for="sec-30" class="ml-2 cursor-not-allowed mr-8">30 sec</label>
         <input id="sec-60" v-model="timeOptions" type="radio" name="time" value="60" class="mr-2" @change="emit('changeValue', 60)" />
-        <label for="sec-60" class="ml-2 cursor-pointer">60 sec</label>
+        <label for="sec-60" class="ml-2 cursor-not-allowed">60 sec</label>
       </div>
     </template>
   </CardInfo>
