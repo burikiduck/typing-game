@@ -2,7 +2,7 @@
 const particleOptions = {
   particles: {
     number: { value: 50 },
-    shape: { type: "circle" },
+    shape: { type: "edge" },
     size: { value: 5 },
     move: { enable: true, speed: 5 },
     opacity: { value: 0.7 },
