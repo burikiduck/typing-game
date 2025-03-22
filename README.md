@@ -22,3 +22,10 @@ This is a typing game where players can practice their typing speed and accuracy
    ```sh
    git clone https://github.com/burikiduck/typing-game.git
    cd vue-typing-game
+1. Install dependencies:
+   ```sh
+   npm install
+1. Start the development server:
+   ```sh
+   npm run dev
+
